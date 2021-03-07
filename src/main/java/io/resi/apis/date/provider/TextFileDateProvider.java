@@ -1,5 +1,8 @@
-package io.resi.apis.date;
+package io.resi.apis.date.provider;
 
+import io.resi.apis.date.Date;
+import io.resi.apis.date.DateProvider;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -10,10 +13,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Component
-class DatesProvider {
+class TextFileDateProvider implements DateProvider {
   private final List<Date> dates;
 
-  public DatesProvider(final String textFilePath) throws IOException {
+  public TextFileDateProvider(@Value( "${source.file}" )final String textFilePath) throws IOException {
     this.dates = getDatesFrom(textFilePath);
   }
 
@@ -29,6 +32,7 @@ class DatesProvider {
     return parsedDates;
   }
 
+  @Override
   public List<Date> getDates() {
     return dates;
   }

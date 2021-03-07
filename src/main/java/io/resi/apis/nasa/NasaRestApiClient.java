@@ -1,5 +1,6 @@
 package io.resi.apis.nasa;
 
+import io.resi.apis.date.Date;
 import io.resi.apis.rover.RoverImage;
 import io.resi.apis.rover.RoverProvider;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,13 +8,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Component
 class NasaRestApiClient implements RoverProvider {
   private static final String BASE_URL = "https://api.nasa.gov/mars-photos/api/v1";
+  private static final String DATE_PATTERN = "yyyy-MM-dd";
   private final RestTemplate restTemplate;
+  private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
   private final String apiKey;
 
   public NasaRestApiClient(@Value("${nasa.api.key}") final String apiKey, final RestTemplate restTemplate) {
@@ -22,14 +26,22 @@ class NasaRestApiClient implements RoverProvider {
   }
 
   @Override
-  public List<RoverImage> getRoverImages(final String roverName, final String date) {
+  public List<RoverImage> getRoverImages(final String roverName, final Date date) {
     final String url = new StringBuilder(BASE_URL)
       .append("/rovers")
       .append("/").append(roverName)
       .append("/photos")
+      .append("?earth_date=").append(formatDate(date))
+      .append("&api_key=").append(apiKey)
       .toString();
 
-    return Arrays.asList();
+    final ResponseEntity<RoverImageList> roverImageList = restTemplate.getForEntity(url, RoverImageList.class);
+    return roverImageList.getBody().getRoverImages();
+  }
+
+  private String formatDate(final Date date) {
+      return LocalDate.of(date.getYear(), date.getMonth(), date.getDay())
+        .format(formatter);
   }
 
   @Override

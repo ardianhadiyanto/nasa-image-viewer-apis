@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class RoverDto {
-  void setName(String name) {
+  private String name;
+
+  void setName(final String name) {
     this.name = name;
   }
-
-  private String name;
 
   String getName() {
     return name;

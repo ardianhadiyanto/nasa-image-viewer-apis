@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 class RoverList {
   private List<RoverDto> rovers = new ArrayList<>();
 
-  void setRovers(List<RoverDto> rovers) {
+  void setRovers(final List<RoverDto> rovers) {
     this.rovers = rovers;
   }
 

@@ -33,7 +33,7 @@ class TextFileDateProvider implements DateProvider {
   }
 
   @Override
-  public List<Date> getDates() {
+  public List<Date> getAvailableDates() {
     return dates;
   }
 }

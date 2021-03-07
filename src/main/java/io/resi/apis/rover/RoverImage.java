@@ -1,5 +1,8 @@
 package io.resi.apis.rover;
 
+import lombok.Data;
+
+@Data
 public class RoverImage {
   private final String rover;
   private final String camera;

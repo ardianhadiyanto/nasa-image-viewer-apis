@@ -1,28 +1,25 @@
 package io.resi.apis.controllers;
 
 import io.resi.apis.rover.RoverImage;
-import io.resi.apis.rover.RoverProvider;
+import io.resi.apis.rover.RoverService;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v1")
 class RoverController {
-  private final RoverProvider roverProvider;
+  private final RoverService roverService;
 
-  RoverController(final RoverProvider roverProvider) {
-    this.roverProvider = roverProvider;
+  RoverController(final RoverService roverService) {
+    this.roverService = roverService;
   }
 
-  @GetMapping(value = "/rovers", produces = MediaType.APPLICATION_JSON_VALUE)
-  List<String> getRovers() {
-    return roverProvider.getRovers();
-  }
-
-  @GetMapping(value = "/rovers/{name}/images", produces = MediaType.APPLICATION_JSON_VALUE)
-  List<RoverImage> getRoverImages(@PathVariable final String name, @RequestParam("date") final String date) {
-    return roverProvider.getRoverImages(name, date);
+  @GetMapping(value = "/images", produces = MediaType.APPLICATION_JSON_VALUE)
+  List<RoverImage> getAvailableRoverImages() {
+    return roverService.getAvailableRoverImages();
   }
 }

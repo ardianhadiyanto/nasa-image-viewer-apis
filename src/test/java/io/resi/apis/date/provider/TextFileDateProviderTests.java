@@ -26,7 +26,7 @@ class TextFileDateProviderTests {
   void getDates_whenDatesProviderIsCreatedWithValidPathToFile_returnAllDatesInTheFile() throws IOException {
     final TextFileDateProvider sut = new TextFileDateProvider(FILE_PATH);
 
-    final List<Date> actual = sut.getDates();
+    final List<Date> actual = sut.getAvailableDates();
 
     assertThat(actual).isNotEmpty();
   }

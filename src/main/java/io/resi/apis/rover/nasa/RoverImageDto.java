@@ -1,4 +1,4 @@
-package io.resi.apis.nasa;
+package io.resi.apis.rover.nasa;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

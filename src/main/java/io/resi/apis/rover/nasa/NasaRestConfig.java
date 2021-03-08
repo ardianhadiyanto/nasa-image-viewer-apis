@@ -1,4 +1,4 @@
-package io.resi.apis.nasa;
+package io.resi.apis.rover.nasa;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

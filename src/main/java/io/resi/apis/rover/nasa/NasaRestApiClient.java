@@ -1,4 +1,4 @@
-package io.resi.apis.nasa;
+package io.resi.apis.rover.nasa;
 
 import io.resi.apis.date.Date;
 import io.resi.apis.rover.RoverImage;

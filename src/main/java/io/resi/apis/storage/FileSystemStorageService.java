@@ -1,6 +1,7 @@
 package io.resi.apis.storage;
 
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -9,11 +10,15 @@ import java.io.IOException;
 
 @Service
 class FileSystemStorageService implements StorageService {
-  private static final String DIR_PATH = "storage";
+  private final String baseStoragePath;
+
+  FileSystemStorageService(@Value("${base.storage.path}") final String baseStoragePath) {
+    this.baseStoragePath = baseStoragePath;
+  }
 
   @PostConstruct
   private void init() {
-    final File storageDir = new File(DIR_PATH);
+    final File storageDir = new File(baseStoragePath);
     if (!storageDir.exists()) {
       storageDir.mkdir();
     }
@@ -46,6 +51,6 @@ class FileSystemStorageService implements StorageService {
   }
 
   private String getPath(final String fileName) {
-    return DIR_PATH + File.separator + fileName;
+    return baseStoragePath + File.separator + fileName;
   }
 }

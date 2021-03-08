@@ -15,9 +15,8 @@ import java.util.List;
 @Component
 class NasaRestApiClient implements RoverProvider {
   private static final String BASE_URL = "https://api.nasa.gov/mars-photos/api/v1";
-  private static final String DATE_PATTERN = "yyyy-MM-dd";
   private final RestTemplate restTemplate;
-  private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+  private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
   private final String apiKey;
 
   public NasaRestApiClient(@Value("${nasa.api.key}") final String apiKey, final RestTemplate restTemplate) {
@@ -35,14 +34,13 @@ class NasaRestApiClient implements RoverProvider {
       .append("&api_key=").append(apiKey)
       .toString();
 
-    final ResponseEntity<RoverImageList> roverImageList = restTemplate.getForEntity(url, RoverImageList.class);
-    return roverImageList.getBody().getRoverImages();
+    return restTemplate.getForObject(url, RoverImageList.class)
+      .getRoverImages();
   }
 
   @Override
   public byte[] getRoverImage(final String imageUrl) {
-    final byte[] imageBytes = restTemplate.getForObject(imageUrl, byte[].class);
-    return imageBytes;
+    return restTemplate.getForObject(imageUrl, byte[].class);
   }
 
   private String formatDate(final Date date) {
@@ -57,7 +55,7 @@ class NasaRestApiClient implements RoverProvider {
       .append("?api_key=").append(apiKey)
       .toString();
 
-    final ResponseEntity<RoverList> roverList = restTemplate.getForEntity(url, RoverList.class);
-    return roverList.getBody().getRovers();
+    return restTemplate.getForObject(url, RoverList.class)
+      .getRovers();
   }
 }

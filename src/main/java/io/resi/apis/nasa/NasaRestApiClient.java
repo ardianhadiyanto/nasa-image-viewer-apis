@@ -39,9 +39,15 @@ class NasaRestApiClient implements RoverProvider {
     return roverImageList.getBody().getRoverImages();
   }
 
+  @Override
+  public byte[] getRoverImage(final String imageUrl) {
+    final byte[] imageBytes = restTemplate.getForObject(imageUrl, byte[].class);
+    return imageBytes;
+  }
+
   private String formatDate(final Date date) {
-      return LocalDate.of(date.getYear(), date.getMonth(), date.getDay())
-        .format(formatter);
+    return LocalDate.of(date.getYear(), date.getMonth(), date.getDay())
+      .format(formatter);
   }
 
   @Override

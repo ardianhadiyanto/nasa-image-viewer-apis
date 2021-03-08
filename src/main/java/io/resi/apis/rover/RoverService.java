@@ -30,4 +30,8 @@ public class RoverService {
 
     return roverImages;
   }
+
+  public byte[] getRoverImage(final String imageUrl) {
+    return roverProvider.getRoverImage(imageUrl);
+  }
 }

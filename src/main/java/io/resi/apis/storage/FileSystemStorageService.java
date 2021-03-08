@@ -20,14 +20,12 @@ class FileSystemStorageService implements StorageService {
   }
 
   @Override
-  public boolean store(final String fileName, final byte[] imageBytes) {
+  public void store(final String fileName, final byte[] imageBytes) {
     final String path = getPath(fileName);
     try {
       FileUtils.writeByteArrayToFile(new File(path), imageBytes);
     } catch (IOException e) {
-      return false;
     }
-    return true;
   }
 
   @Override

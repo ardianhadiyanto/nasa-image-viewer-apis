@@ -43,8 +43,8 @@ public class RoverService {
     if (storageService.exists(fileNameHash)) {
       imageBytes = storageService.retrieve(fileNameHash);
     } else {
-      System.out.println("getting from api");
       imageBytes = roverProvider.getRoverImage(imageUrl);
+      storageService.store(fileNameHash, imageBytes);
     }
 
     return imageBytes;

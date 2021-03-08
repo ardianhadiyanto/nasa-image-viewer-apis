@@ -1,4 +1,4 @@
-package io.resi.apis.rover.nasa;
+package io.resi.apis.rover.provider.nasa;
 
 import java.util.ArrayList;
 import java.util.List;

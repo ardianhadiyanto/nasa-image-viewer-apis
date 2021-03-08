@@ -1,4 +1,4 @@
-package io.resi.apis.rover.nasa;
+package io.resi.apis.rover.provider.nasa;
 
 import io.resi.apis.rover.RoverImage;
 

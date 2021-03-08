@@ -1,6 +1,7 @@
-package io.resi.apis.rover;
+package io.resi.apis.rover.provider;
 
 import io.resi.apis.date.Date;
+import io.resi.apis.rover.RoverImage;
 
 import java.util.List;
 

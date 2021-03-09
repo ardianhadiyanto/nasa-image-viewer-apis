@@ -6,15 +6,11 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 class TextFileDateProviderTests {
-  private final static String FILE_PATH = "src/test/resources/image-dates.txt";
-  @Test
-  void constructor_givenInvalidPathToFile_throwException() {
-    assertThatIOException()
-      .isThrownBy(() -> { new TextFileDateProvider("invalid"); });
-  }
+  private final static String FILE_PATH = "/image-dates.txt";
 
   @Test
   void constructor_givenValidPathToFile_noExceptionIsThrown() {

@@ -55,18 +55,16 @@ The images supported will be from the below dates:
 
 To work with the source code, please ensure that you are utilizing an IDE that has a nice support for Java tooling.
 
-Since this project will send requests to NASA APIs, it will need a valid token, which you can get from https://api.
-nasa.gov/. By default, this project will use the special DEMO_KEY token. If you have your own token, you can set
-the `nasa.api.key` field in `application.properties` file to use your token.
+Since this project will send requests to NASA APIs, it will need a valid token, which you can get from https://api.nasa.gov/. By default, this project will use the special DEMO_KEY token. If you have your own token, you can set the `nasa.api.key` field in the `application.properties` file to use your token.
 
-### From a jar
+### From Jar
 1. Build the jar
   ```
   mvn package
   ```
 2. Run the jar
   ```
-  java -jar nasa-image-viewer-server-0.0.1-SNAPSHOT.jar
+  java -jar nasa-image-viewer-apis-0.0.1-SNAPSHOT.jar
   ```
 
 ### From Docker Image

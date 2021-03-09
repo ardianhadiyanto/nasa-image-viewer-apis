@@ -28,7 +28,7 @@ The images supported will be from the below dates:
 - GET list of images: `/api/v1/images`
   http://localhost:8080/api/v1/images
   returns:
-  ```json
+  ```
   [
     {
         "rover": "Curiosity",

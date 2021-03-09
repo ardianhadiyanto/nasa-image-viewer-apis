@@ -34,12 +34,12 @@ class RoverImageDto {
   }
 
   @JsonProperty("rover")
-  private void unpackRover(Map<String, Object> rover) {
+  void unpackRover(Map<String, Object> rover) {
     this.roverName = rover.get("name").toString();
   }
 
   @JsonProperty("camera")
-  private void unpackCamera(Map<String, Object> camera) {
+  void unpackCamera(Map<String, Object> camera) {
     this.cameraName = camera.get("name").toString();
   }
 

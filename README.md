@@ -85,3 +85,4 @@ the `nasa.api.key` field in `application.properties` file to use your token.
 3. Spring Boot
 4. JUnit 5
 5. Docker
+6. PMD

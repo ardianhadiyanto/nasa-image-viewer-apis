@@ -21,7 +21,7 @@ class TextFileDateProvider implements DateProvider {
 
   private List<Date> getDatesFrom(String pathToFile) throws IOException {
     final List<Date> parsedDates = new ArrayList<>();
-    try (final InputStream inputStream = getClass().getResourceAsStream(pathToFile);) {
+    try (InputStream inputStream = getClass().getResourceAsStream(pathToFile)) {
       IOUtils.readLines(inputStream, StandardCharsets.UTF_8)
         .forEach(line -> {
           final Date date = Date.of(line);

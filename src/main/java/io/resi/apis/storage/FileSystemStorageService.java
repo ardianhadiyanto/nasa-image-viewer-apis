@@ -4,7 +4,6 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,10 +13,10 @@ class FileSystemStorageService implements StorageService {
 
   FileSystemStorageService(@Value("${base.storage.path}") final String baseStoragePath) {
     this.baseStoragePath = baseStoragePath;
+    initializeStorage();
   }
 
-  @PostConstruct
-  private void init() {
+  private void initializeStorage() {
     final File storageDir = new File(baseStoragePath);
     if (!storageDir.exists()) {
       storageDir.mkdir();

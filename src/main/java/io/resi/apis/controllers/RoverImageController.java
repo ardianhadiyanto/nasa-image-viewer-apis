@@ -21,7 +21,7 @@ class RoverImageController {
     return roverService.getAvailableRoverImages();
   }
 
-  @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.IMAGE_JPEG_VALUE)
+  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.IMAGE_JPEG_VALUE)
   byte[] getAvailableRoverImages(@RequestBody final ImageRequest request) {
     return roverService.getRoverImage(request.getUrl());
   }

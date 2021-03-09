@@ -59,7 +59,7 @@ Since this project will send requests to NASA APIs, it will need a valid token, 
 nasa.gov/. By default, this project will use the special DEMO_KEY token. If you have your own token, you can set
 the `nasa.api.key` field in `application.properties` file to use your token.
 
-To run from a jar:
+### From a jar
 1. Build the jar
   ```
   mvn package
@@ -69,8 +69,19 @@ To run from a jar:
   java -jar nasa-image-viewer-server-0.0.1-SNAPSHOT.jar
   ```
 
+### From Docker Image
+1. Build the image
+  ```
+  docker build -t nasa-image-viewer-apis .
+  ```
+2. Run the image
+  ```
+  docker run -p 8080:8080 --name nasa-image-viewer-apis nasa-image-viewer-apis
+  ```
+
 ## Built With
 1. Java 8
 2. Maven
 3. Spring Boot
 4. JUnit 5
+5. Docker
